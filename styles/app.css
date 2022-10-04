@@ -1,0 +1,53 @@
+body{
+    background: linear-gradient(120deg,#e2c35d,#d88771);
+    color: white;
+    font-family:"Poppins";
+}
+header{
+    font-size: 2rem;
+    text-align: center;
+}
+form{
+    text-align: center;
+    position: relative;
+}
+.todo-input{
+   border: none;
+   outline: none;
+   height: 25px;
+}
+.fas{
+    color:#E08D6C !important;
+}
+.add-button{
+    background:transparent;
+    border: none;
+    position: absolute;
+    right: 36.5rem;
+    top: 4px;
+    cursor: pointer;
+}
+.select{
+
+}
+.filter-todo{
+
+}
+.todo-container{
+
+}
+.todo-list{
+
+}
+.todo{
+
+}
+.todo__content{
+
+}
+.completed{
+
+}
+.delete{
+
+}
