@@ -32,51 +32,20 @@ header,form{
     background:white;
     height: 50px;
 }
-/* .todo-input{
-   border: none;
-   outline: none;
-   height: 25px;
-}
-.fas{
-   
-}
-.add-button{
-    background:transparent;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: all .3s ease;
-    height: 100%;
-}
-.add-button:hover{
-    color: white;
-    background-color:#d88771;
-}
-.select{
 
-}
-#filter-todo{
-    border: none;
-    outline: none;
-    height: 25px;
-    width: 80px;
-    margin-left: 5px;
-}
-.todo-container{
-
-}
 .todo-list{
-
+    display: flex;
 }
 .todo{
-
+    display: flex;
 }
 .todo__content{
-
+   list-style: none;
+   background-color: #FFFDFF;
 }
 .completed{
 
 }
 .delete{
 
-} */
+}
