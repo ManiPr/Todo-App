@@ -11,7 +11,6 @@ body{
 }
 header{
     font-size: 1.5rem;
-   
 }
 header,form{
     min-height: 20vh;
@@ -21,6 +20,13 @@ header,form{
 }
 .add-button{
     cursor: pointer;
+    color: #ff6f47;
+  
+}
+.add-button:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #ff6f47;
 }
 .todo-input{
     outline: none;
@@ -32,19 +38,37 @@ header,form{
     background:white;
     height: 50px;
 }
-
-.todo-list{
+.todo-container{
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.todo-list{
+   min-width: 30%;
+   list-style:none;
 }
 .todo{
+    margin: .5rem;
+    background: white;
+    color: black;
+    font-size: 1.5rem;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .todo__content{
-   list-style: none;
-   background-color: #FFFDFF;
+    flex: 1;
+}
+.completed,.delete{
+    background-color: #ff6f47;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    padding: 1rem;
+    cursor: pointer;
 }
 .completed{
-
+    background-color: rgb(74, 203, 74);
 }
 .delete{
 
