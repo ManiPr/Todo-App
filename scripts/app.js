@@ -7,28 +7,29 @@ let todosArray = []
 
 
 function addTodo(event){
+   
     event.preventDefault();
-  
-    let newTodoTitle = todoInputElm.value
+    if(todoInputElm.value!==''){
+        let newTodoTitle = todoInputElm.value
     
-    let newTodoObj={
-        id: todosArray.length + 1,
-        title: newTodoTitle,
-        complete: false
+        let newTodoObj={
+            id: todosArray.length + 1,
+            title: newTodoTitle,
+            complete: false
+        }
+        todoInputElm.value = ''
+        todosArray.push(newTodoObj)
+        setLocalStorage(todosArray)
+        todosGenerator(todosArray)
+    
+        todoInputElm.focus()
+    
     }
-    todoInputElm.value = ''
-    todosArray.push(newTodoObj)
-    setLocalStorage(todosArray)
-    todosGenerator(todosArray)
-
-    todoInputElm.focus()
-
+   
 }
-
 function todosGenerator(todosList){
     todoListElm.innerHTML=''
         todosList.forEach((todo) => {
-            console.log(todo);
             todoListElm.insertAdjacentHTML('beforeend',`
         <div class="todo">
         <li class="todo__content">${todo.title}</li>
@@ -82,18 +83,6 @@ function getLocalStorage(){
 
 window.addEventListener('load', getLocalStorage)
 addButtonElm.addEventListener('click',addTodo)
-todoInputElm.addEventListener('keydown',()=>{
-    if (!todoInputElm.value) {
-        let newTodoObj2={
-            id: todosArray.length + 1,
-            title: todoInputElm.value,
-            complete: false
-        }
-        console.log('emty');
-        newTodoObj.title=''
-        todosArray.push(newTodoObj2)
-        addTodo(todosArray)
-    }
-}) 
+
 
 
