@@ -33,8 +33,8 @@ function todosGenerator(todosList){
             todoListElm.insertAdjacentHTML('beforeend',`
         <div class="todo">
         <li class="todo__content">${todo.title}</li>
-        <button onclick='completedTodo(${todo.id})' class="completed">
-            <i class="fa fa-check" aria-hidden="true"></i>
+        <button onclick='completedTodo(${todo.id},event)' class="completed">
+            <i class="fa fa-check"  aria-hidden="true"></i>
         </button>
         <button onclick='deleteTodo(${todo.id})' class="delete">
             <i class="fas fa-trash"></i>
@@ -44,8 +44,9 @@ function todosGenerator(todosList){
     });
         
 }
-function completedTodo(todoId){
-
+function completedTodo(todoId,event){
+    const item=event.target
+    
     let localStorageTodos=JSON.parse(localStorage.getItem('todos'))
 
     todosArray=localStorageTodos
@@ -54,6 +55,11 @@ function completedTodo(todoId){
 
     mainTodo.complete=true
     
+    const todo=item.parentElement
+    
+    todo.classList.toggle('completed-active')
+    
+    console.log(mainTodo.complete);
 }
 function deleteTodo(todoId){
     let localStorageTodos = JSON.parse(localStorage.getItem('todos'))
@@ -80,7 +86,6 @@ function getLocalStorage(){
     }
     todosGenerator(todosArray)
 }
-
 window.addEventListener('load', getLocalStorage)
 addButtonElm.addEventListener('click',addTodo)
 
