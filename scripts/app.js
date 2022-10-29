@@ -54,6 +54,11 @@ function completedTodo(todoId,event){
     let mainTodo=todosArray.find(todo=>todo.id===todoId)
 
     mainTodo.complete=true
+
+    if(event.target.tagName === 'I'){
+       event.target.parentElement.parentElement.classList.toggle('completed-active');
+       event.target.parentElement.classList.toggle('completed-active');
+    }
     
     const todo=item.parentElement
     
