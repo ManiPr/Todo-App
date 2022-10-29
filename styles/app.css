@@ -73,7 +73,14 @@ header,form{
 .delete{
 
 }
+.fa-check,.fa-trash{
+    pointer-events: none;
+}
 .completed-active{
     text-decoration: line-through;
     opacity: 0.5;
+}
+.fall{
+    transform: translateY(8rem) rotateZ(20deg);
+    opacity: 0;
 }

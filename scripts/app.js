@@ -36,7 +36,7 @@ function todosGenerator(todosList){
         <button onclick='completedTodo(${todo.id},event)' class="completed">
             <i class="fa fa-check"  aria-hidden="true"></i>
         </button>
-        <button onclick='deleteTodo(${todo.id})' class="delete">
+        <button onclick='deleteTodo(${todo.id},event)' class="delete">
             <i class="fas fa-trash"></i>
         </button>
     </div>
@@ -62,20 +62,7 @@ function completedTodo(todoId,event){
 
     todo.classList.toggle('completed-active')
     
-    if(event.target.tagName === 'I'){
-       todo.parentElement.classList.toggle('completed-active');
-       todo.classList.toggle('completed-active');
-       if(todo.parentElement.className==='todo completed-active'){
-        mainTodo.complete=false
-        console.log("this is fasle ")
-        console.log(mainTodo);
-    }
-    else{
-        console.log('this is a true');
-        mainTodo.complete=true
-        console.log(mainTodo);
-    }
-     }
+  
      if(todo.className==='todo completed-active'){
         mainTodo.complete=false
         console.log("this is fasle ")
@@ -88,15 +75,17 @@ function completedTodo(todoId,event){
     }
     
 }
-function deleteTodo(todoId){
+function deleteTodo(todoId,e){
     let localStorageTodos = JSON.parse(localStorage.getItem('todos'))
 
     todosArray = localStorageTodos
 
     let mainTodoIndex=todosArray.findIndex(todo=>todo.id===todoId)
 
-    todosArray.splice(mainTodoIndex,1)
-
+    // todosArray.splice(mainTodoIndex,1)
+    console.log(e.target.parentElement.className);
+    e.target.parentElement.className='fall'
+    console.log(e.target.parentElement.className);
     setLocalStorage(todosArray)
 
     todosGenerator(todosArray)
