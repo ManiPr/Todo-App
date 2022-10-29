@@ -1,4 +1,4 @@
-let $=document
+let $=document//refactorcompletedTodo
 let todoInputElm=$.querySelector('.todo-input')
 let addButtonElm=$.querySelector('.add-button')
 let todoListElm=$.querySelector('.todo-list')
@@ -7,7 +7,7 @@ let todosArray = []
 
 
 function addTodo(event){
-   
+
     event.preventDefault();
     if(todoInputElm.value!==''){
         let newTodoTitle = todoInputElm.value
@@ -45,6 +45,7 @@ function todosGenerator(todosList){
         
 }
 function completedTodo(todoId,event){
+
     const item=event.target
     
     let localStorageTodos=JSON.parse(localStorage.getItem('todos'))
@@ -53,18 +54,39 @@ function completedTodo(todoId,event){
 
     let mainTodo=todosArray.find(todo=>todo.id===todoId)
 
-    mainTodo.complete=true
+    console.log(mainTodo.complete=false);
 
-    if(event.target.tagName === 'I'){
-       event.target.parentElement.parentElement.classList.toggle('completed-active');
-       event.target.parentElement.classList.toggle('completed-active');
-    }
-    
     const todo=item.parentElement
-    
+
+    console.log(todo.className);
+
     todo.classList.toggle('completed-active')
     
-    console.log(mainTodo.complete);
+    if(event.target.tagName === 'I'){
+       todo.parentElement.classList.toggle('completed-active');
+       todo.classList.toggle('completed-active');
+       if(todo.parentElement.className==='todo completed-active'){
+        mainTodo.complete=false
+        console.log("this is fasle ")
+        console.log(mainTodo);
+    }
+    else{
+        console.log('this is a true');
+        mainTodo.complete=true
+        console.log(mainTodo);
+    }
+     }
+     if(todo.className==='todo completed-active'){
+        mainTodo.complete=false
+        console.log("this is fasle ")
+        console.log(mainTodo);
+    }
+    else{
+        console.log('this is a true');
+        mainTodo.complete=true
+        console.log(mainTodo);
+    }
+    
 }
 function deleteTodo(todoId){
     let localStorageTodos = JSON.parse(localStorage.getItem('todos'))
