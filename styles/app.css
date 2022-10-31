@@ -55,6 +55,7 @@ header,form{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 3s ease;
 }
 .todo__content{
     flex: 1;

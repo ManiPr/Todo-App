@@ -1,8 +1,8 @@
-let $=document//refactorcompletedTodo
+let $=document//refactorcompletedTodo  وقتی صفحه refresh میشود کل چیز ها از اول میشود درستش کن
 let todoInputElm=$.querySelector('.todo-input')
 let addButtonElm=$.querySelector('.add-button')
 let todoListElm=$.querySelector('.todo-list')
-
+//با promis درستش بکن اول یادش بگیر بعد درستش بکن
 let todosArray = []
 
 
@@ -62,42 +62,47 @@ function completedTodo(todoId,event){
 
     todo.classList.toggle('completed-active')
     
-  
-     if(todo.className==='todo completed-active'){
+    if(todo.className==='todo completed-active'){
         mainTodo.complete=false
-        console.log("this is fasle ")
-        console.log(mainTodo);
     }
     else{
-        console.log('this is a true');
         mainTodo.complete=true
-        console.log(mainTodo);
     }
-    
 }
-function deleteTodo(todoId,e){
+function deleteTodo(todoId,event){
     let localStorageTodos = JSON.parse(localStorage.getItem('todos'))
 
     todosArray = localStorageTodos
 
     let mainTodoIndex=todosArray.findIndex(todo=>todo.id===todoId)
 
-    // todosArray.splice(mainTodoIndex,1)
-    console.log(e.target.parentElement.className);
-    e.target.parentElement.className='fall'
-    console.log(e.target.parentElement.className);
-    setLocalStorage(todosArray)
+     todosArray.splice(mainTodoIndex,1)
 
-    todosGenerator(todosArray)
+    console.log(event.target.parentElement);
+
+    event.target.parentElement.style.cssText=
+    `
+    transform:translateY(8rem) rotateZ(20deg);
+    opacity: 0;
+    `
+  
+    setInterval(() => {
+        setLocalStorage(todosArray)
+        todosGenerator(todosArray)
+    }, 2500);
+    
 }
 function setLocalStorage(todoList){
     localStorage.setItem('todos',JSON.stringify(todoList))
 }
 function getLocalStorage(){
+
     let localStorageTodos=JSON.parse(localStorage.getItem('todos'))
+
     if(localStorageTodos){
         todosArray=localStorageTodos
-    }else{
+    }
+    else{
         todosArray=[]
     }
     todosGenerator(todosArray)
